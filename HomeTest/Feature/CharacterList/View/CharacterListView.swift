@@ -82,6 +82,7 @@ class CharacterListView: UIView, NibLoadable {
             .receive(on: DispatchQueue.main)
             .sink {[weak self] value in
                 self?.dataSource.canPaginate = value
+                self?.dataSource.isLoading = false
             }
             .store(in: &cancellables)
         

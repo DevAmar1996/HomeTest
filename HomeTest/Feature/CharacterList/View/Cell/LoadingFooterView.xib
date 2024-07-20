@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,15 +14,27 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9OF-Oz-Uz6">
-                    <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
-                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65S-9f-Xx6">
+                    <rect key="frame" x="0.0" y="406" width="393" height="40"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9OF-Oz-Uz6">
+                            <rect key="frame" x="186.66666666666666" y="20" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9OF-Oz-Uz6" firstAttribute="centerX" secondItem="65S-9f-Xx6" secondAttribute="centerX" id="2uh-dm-RqN"/>
+                        <constraint firstAttribute="bottom" secondItem="9OF-Oz-Uz6" secondAttribute="bottom" id="GEX-eg-FB8"/>
+                        <constraint firstAttribute="height" constant="40" id="vuR-To-Ufs"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="9OF-Oz-Uz6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gx8-s6-aMu"/>
-                <constraint firstItem="9OF-Oz-Uz6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="h0T-Yt-BTg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="65S-9f-Xx6" secondAttribute="trailing" id="ILN-r4-kf9"/>
+                <constraint firstItem="65S-9f-Xx6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="P6d-eY-M7q"/>
+                <constraint firstItem="65S-9f-Xx6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sZM-YX-A9D"/>
             </constraints>
             <point key="canvasLocation" x="126" y="-1"/>
         </view>

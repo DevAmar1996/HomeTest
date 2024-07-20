@@ -16,6 +16,8 @@ class CharactersDataSource: NSObject, UITableViewDelegate, UITableViewDataSource
           
     var paginate: (() -> Void)?
     
+    var isLoading = false
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         characters.count
     }
@@ -41,12 +43,28 @@ class CharactersDataSource: NSObject, UITableViewDelegate, UITableViewDataSource
     }
                 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard canPaginate else {return}
-        if indexPath.row == characters.count - 1 { // last cell
-            canPaginate = false
-            paginate?()
+        let lastRowIndex = tableView.numberOfRows(inSection: .zero) - 1
+        if indexPath.row == lastRowIndex {
+            if canPaginate, !isLoading {
+                buildFooterView(tableView)
+            } else {
+                tableView.tableFooterView = nil
+                tableView.contentInset.bottom = 0
+            }
         }
     }
     
 
+}
+extension CharactersDataSource {
+    private func buildFooterView(_ tableView: UITableView) {
+        let footerView = LoadingFooterView()
+        tableView.tableFooterView = footerView
+        tableView.tableFooterView?.isHidden = false
+        tableView.contentInset.bottom = 50
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.paginate?()
+        }
+    }
 }

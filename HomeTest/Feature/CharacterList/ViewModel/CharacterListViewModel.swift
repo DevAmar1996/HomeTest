@@ -20,19 +20,17 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
     @Published var haveMorePages: Bool = false
     @Published var apiErrorMessage: String? = nil
 
-    private var page = 1
         
     //MARK: Logic functions
     func loadViewContent()  {
         loadData()
     }
     
- 
-    private func loadData(status: CharacterStatus? = nil) {
-        shouldShowLoading = page == 1
+    private func loadData(nextPagePath: String? = nil ,status: CharacterStatus? = nil) {
+        shouldShowLoading = nextPagePath == nil
         Task {
             do {
-                let link = APIConstants.characterApiPath(with: page, status: status)
+                let link = nextPagePath ?? APIConstants.characterApiPath( status: status)
                 let response: CharacterResponse? =  try await NetworkManager.shared.makeRequest(link: link, httpMethod: .get)
                 handleResponse(response)
             }catch {
@@ -41,14 +39,13 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
         }
     }
     
-    private func handleResponse(_ response: CharacterResponse?) {
-        if page > 1 {
+    private func handleResponse(_ mResponse: CharacterResponse?) {
+        if mResponse?.info.prev != nil {
             updateCurrentCharacter(characters: response?.results ?? [])
         }else {
             shouldShowLoading = false
-            self.response = response
+            response = mResponse
         }
-        
         haveMorePages = response?.info.next != nil
     }
     
@@ -56,20 +53,17 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
           apiErrorMessage = error.localizedDescription
           shouldShowLoading = false
           haveMorePages = false
-      }
-    
+    }
     
     func updateCurrentCharacter(characters: [Character]) {
         self.response?.results.append(contentsOf: characters)
     }
     
     func paginate() {
-        page += 1
-        loadData()
+        loadData(nextPagePath: response?.info.next)
     }
 
      func update(for status: CharacterStatus?) {
-        page = 1
         loadData(status: status)
     }
 }

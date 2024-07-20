@@ -11,7 +11,7 @@ import Foundation
 struct APIConstants {
     private static let BASEURL =  "https://rickandmortyapi.com"
     
-    static func characterApiPath(with page: Int, status: CharacterStatus? = nil) -> String {
-        BASEURL + "/api/character/?page=\(page)" + (status == nil ? "" : "&status=\(status?.rawValue ?? "")")
+    static func characterApiPath(status: CharacterStatus? = nil) -> String {
+        BASEURL + "/api/character/?page=\(1)" + (status == nil ? "" : "&status=\(status?.rawValue ?? "")")
     }
 }
