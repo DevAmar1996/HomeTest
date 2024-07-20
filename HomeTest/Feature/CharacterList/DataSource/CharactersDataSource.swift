@@ -8,7 +8,7 @@ import UIKit
 
 
 //MARK: TableView delegate/datasource
-class CharactersDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+class CharactersDataSource: NSObject, UITableViewDataSource, UITableViewDelegate  {
     
     var characters: [Character] = []
     
@@ -54,7 +54,19 @@ class CharactersDataSource: NSObject, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-
+    func updateCharacters(tableView: UITableView, with newData: [Character]) {
+           if isLoading {
+               isLoading = false
+               let indexPaths = Array(characters.count...(characters.count + newData.count - 1)).map {
+                   IndexPath(item: $0, section: 0)
+               }
+               characters.append(contentsOf: newData)
+               tableView.insertRows(at: indexPaths, with: .automatic)
+           } else {
+               characters = newData
+               tableView.reloadData()
+           }
+       }
 }
 extension CharactersDataSource {
     private func buildFooterView(_ tableView: UITableView) {

@@ -6,13 +6,6 @@
 //
 
 import Foundation
-// MARK: - Info
-struct Info: Codable {
-    let count: Int?
-    let pages: Int?
-    let next: String?
-    let prev: String?
-}
 
 // MARK: - Character
 struct Character: Codable {
@@ -40,12 +33,6 @@ struct Location: Codable {
 struct Origin: Codable {
     let name: String
     let url: String
-}
-
-// MARK: - CharacterResponse
-struct CharacterResponse: Codable {
-    let info: Info
-    var results: [Character]
 }
 
 // Mock Data

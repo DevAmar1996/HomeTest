@@ -61,38 +61,32 @@ class CharacterListView: UIView, NibLoadable {
     
     //MARK: Binding
     private func setupBinding() {
-        viewModel.$shouldShowLoading
-            .receive(on: DispatchQueue.main)
-            .sink {[weak self] value in
-                value ? self?.activityIndicator.startAnimating() :  self?.activityIndicator.stopAnimating()
-            }
-            .store(in: &cancellables)
         
-        viewModel.$response
+        viewModel.$characterList
             .receive(on: DispatchQueue.main)
             .sink {[weak self] model in
-                print("Fetch Model data")
-                self?.dataSource.characters = model?.results ?? []
-                self?.tableView.tableFooterView = UIView()
-                self?.tableView.reloadData()
+                guard let self = self else {return}
+                
+                //error
+                if let error = model.error {
+                   showError(error)
+                    return
+                }
+                
+                //data
+                let isPagination = dataSource.isLoading
+                dataSource.updateCharacters(tableView: tableView, with: model.data)
+                
+                //Pagination
+                dataSource.canPaginate = model.haveMorePages
+                dataSource.isLoading = false
+                
+                //loading
+                model.loading ? activityIndicator.startAnimating() :   activityIndicator.stopAnimating()
+                
             }
             .store(in: &cancellables)
         
-        viewModel.$haveMorePages
-            .receive(on: DispatchQueue.main)
-            .sink {[weak self] value in
-                self?.dataSource.canPaginate = value
-                self?.dataSource.isLoading = false
-            }
-            .store(in: &cancellables)
-        
-        viewModel.$apiErrorMessage
-            .receive(on: DispatchQueue.main)
-            .sink {[weak self] message in
-                guard let message = message else {return}
-                self?.showError(message)
-            }
-            .store(in: &cancellables)
         
     }
     

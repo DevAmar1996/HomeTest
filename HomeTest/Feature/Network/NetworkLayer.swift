@@ -29,7 +29,7 @@ struct NetworkManager {
     private init() {}
     
     func makeRequest<T: Decodable> (link: String,
-                                    httpMethod: HTTPMethod)  async throws -> T? {
+                                    httpMethod: HTTPMethod)  async throws -> T {
         guard let url = URL(string: link) else {
             throw(NetworkError.invalidURL)
         }
