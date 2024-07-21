@@ -16,6 +16,7 @@ struct CharacterListViewRepresentable: UIViewRepresentable {
         let view = CharacterListView()
         
         
+        
         return view
     }
     

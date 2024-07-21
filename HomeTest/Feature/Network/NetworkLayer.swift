@@ -22,12 +22,12 @@ public enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-
-struct NetworkManager {
-    static let shared: NetworkManager = NetworkManager()
-    
-    private init() {}
-    
+protocol NetworkManagerProtocol {
+    func makeRequest<T: Decodable> (link: String,
+                                    httpMethod: HTTPMethod)  async throws -> T 
+}
+struct NetworkManager: NetworkManagerProtocol {
+        
     func makeRequest<T: Decodable> (link: String,
                                     httpMethod: HTTPMethod)  async throws -> T {
         guard let url = URL(string: link) else {
@@ -42,8 +42,12 @@ struct NetworkManager {
             }
             let model = try JSONDecoder().decode(T.self, from: data)
             return model
-        }catch is DecodingError {
-            throw(NetworkError.decodingFailed)
+        }catch let decodingError as DecodingError {
+            throw(NetworkError.decodingFailed(message: decodingError.localizedDescription))
+        }catch {
+            throw(NetworkError.unknownError(message: error.localizedDescription))
         }
     }
 }
+
+

@@ -10,8 +10,8 @@ import Foundation
 enum NetworkError: Error, LocalizedError {
     case invalidURL
     case requestFailed
-    case decodingFailed
-    case unknownError
+    case decodingFailed(message: String)
+    case unknownError(message: String)
     
     var errorDescription: String? {
         switch self {
@@ -19,10 +19,12 @@ enum NetworkError: Error, LocalizedError {
                   return "The URL is invalid."
               case .requestFailed:
                   return "The request failed."
-              case .decodingFailed:
-                  return "Failed to decode the response."
-              case .unknownError:
-                  return "An unknown error occurred."
+              case .decodingFailed(let message):
+                  return "Failed to decode the response. \(message)"
+              case .unknownError(let message):
+                  return "An unknown error occurred. \(message)"
         }
     }
 }
+
+

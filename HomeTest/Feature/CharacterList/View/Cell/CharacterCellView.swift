@@ -34,7 +34,10 @@ struct CharacterCellView: View {
             .background(backgroundView)
             .padding(.horizontal, 2)
             .frame(height:  96)
-        }
+        }       
+        .accessibilityIdentifier("characterNavigationLink")
+
+
     }
     
     private var backgroundView: some View {

@@ -17,13 +17,17 @@ protocol CharacterListViewModelProtocol {
 
 
 class CharacterListViewModel: CharacterListViewModelProtocol {
+    
     //MARK: Variables
-//    @Published var shouldShowLoading: Bool = false
     @Published private(set) var characterList: PresentableCharacterList = PresentableCharacterList()
-    private var response: ApiListResponse<Character>? = nil
-//    @Published var haveMorePages: Bool = false
-//    @Published var apiErrorMessage: String? = nil
-//    
+    var response: ApiListResponse<Character>? = nil
+    
+    let networkManager: NetworkManagerProtocol
+    
+    init(networkManager: NetworkManagerProtocol) {
+        self.networkManager = networkManager
+    }
+    
     //MARK: Logic functions
     func loadViewContent()  {
         loadData()
@@ -33,8 +37,8 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
 
         Task {
             do {
-                let link = nextPagePath ?? APIConstants.characterApiPath( status: status)
-                response =  try await NetworkManager.shared.makeRequest(link: link, httpMethod: .get)
+                let link = nextPagePath ?? APIConstants.characterApiPath( status: status?.rawValue)
+                response =  try await networkManager.makeRequest(link: link, httpMethod: .get)
                 handleResponse(response)
             }catch {
                 handleError(error)

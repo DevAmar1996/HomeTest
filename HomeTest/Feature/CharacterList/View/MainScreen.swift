@@ -17,10 +17,12 @@ struct MainScreen: View {
                 FilterView(selectedFilter: $selectedFilter)
                 
                 CharacterListViewRepresentable(selectedFilter: $selectedFilter)
-                    
+                    .edgesIgnoringSafeArea(.all)
+
             }.padding([.top, .horizontal], 12)          .navigationBarTitle("Characters", displayMode: .large)
 
-        }
+        }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+
         
     }
 }

@@ -18,8 +18,9 @@ struct FilterView: View {
                 Text(filter.title)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
-                    .background(Capsule().stroke(Color.gray, lineWidth: 1)
-                        .fill(selectedFilter == filter ? Color.lightGray : .clear))
+                    .background(Capsule()
+                        .stroke(Color.gray, lineWidth: 1)
+                        .background(Capsule().fill(selectedFilter == filter ? Color.lightGray : Color.clear)))
                     .onTapGesture {
                         if selectedFilter == filter {
                             selectedFilter = nil
