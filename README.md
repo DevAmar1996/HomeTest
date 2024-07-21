@@ -22,26 +22,26 @@ open HomeTest.xcodeproj
 - Unit Tests: Press Cmd + U to run the unit tests.
 
 ### Assumptions and Decisions
--Architecture: The app follows the MVVM (Model-View-ViewModel) architecture pattern.
--Networking: Network requests are managed using NetworkManager with URLSession. A protocol was defined to mock data for testing.
--UI Framework: The app is built using SwiftUI, with some UIKit components integrated using UIViewRepresentable.
--Data Handling: Codable is used for parsing JSON data.
--Generic Model: A generic model is implemented to fetch data, allowing for easy API expansion.
--NibLoadable: Custom views are loaded from nib files using the NibLoadable protocol for easy reuse and initialization.
+* Architecture: The app follows the MVVM (Model-View-ViewModel) architecture pattern.
+* Networking: Network requests are managed using NetworkManager with URLSession. A protocol was defined to mock data for testing.
+* UI Framework: The app is built using SwiftUI, with some UIKit components integrated using UIViewRepresentable.
+* Data Handling: Codable is used for parsing JSON data.
+* Generic Model: A generic model is implemented to fetch data, allowing for easy API expansion.
+* NibLoadable: Custom views are loaded from nib files using the NibLoadable protocol for easy reuse and initialization.
 
  ### Challenges and Solutions
   1.Pagination:
-    - Challenge: Ensuring smooth and efficient pagination without repeated requests.
-    - Solution: Managed with a canPaginate flag to decide if there should be pagination and an isLoading flag (lock pattern) to prevent multiple simultaneous pagination requests.
+    * Challenge: Ensuring smooth and efficient pagination without repeated requests.
+    * Solution: Managed with a canPaginate flag to decide if there should be pagination and an isLoading flag (lock pattern) to prevent multiple simultaneous pagination requests.
   2.UI Integration:
-    - Challenge: Integrating UIKit views within SwiftUI.
-    - Solution: Used UIViewRepresentable to bridge UIKit components with SwiftUI and UIHostingController to present SwiftUI views within UIKit.
+    * Challenge: Integrating UIKit views within SwiftUI.
+    * Solution: Used UIViewRepresentable to bridge UIKit components with SwiftUI and UIHostingController to present SwiftUI views within UIKit.
  3.Asynchronous Data Loading:
-    - Challenge: Handling asynchronous data loading and updating the UI accordingly.
-    - Solution: Utilized Combine for reactive programming, ensuring all UI updates are performed on the main thread.
+    * Challenge: Handling asynchronous data loading and updating the UI accordingly.
+    * Solution: Utilized Combine for reactive programming, ensuring all UI updates are performed on the main thread.
  4.Asynchronous Data Loading:
-    - Challenge: Handling asynchronous data loading and updating the UI accordingly.
-    - Solution: : Defined a NetworkError enum to represent different error states and updated the UI to show appropriate error messages.
+    * Challenge: Handling asynchronous data loading and updating the UI accordingly.
+    * Solution: : Defined a NetworkError enum to represent different error states and updated the UI to show appropriate error messages.
 
 
 
