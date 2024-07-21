@@ -30,16 +30,16 @@ open HomeTest.xcodeproj
 * NibLoadable: Custom views are loaded from nib files using the NibLoadable protocol for easy reuse and initialization.
 
  ### Challenges and Solutions
-  1.Pagination:
+  1. Pagination:
     * Challenge: Ensuring smooth and efficient pagination without repeated requests.
     * Solution: Managed with a canPaginate flag to decide if there should be pagination and an isLoading flag (lock pattern) to prevent multiple simultaneous pagination requests.
-  2.UI Integration:
+  2. UI Integration:
     * Challenge: Integrating UIKit views within SwiftUI.
     * Solution: Used UIViewRepresentable to bridge UIKit components with SwiftUI and UIHostingController to present SwiftUI views within UIKit.
- 3.Asynchronous Data Loading:
+ 3. Asynchronous Data Loading:
     * Challenge: Handling asynchronous data loading and updating the UI accordingly.
     * Solution: Utilized Combine for reactive programming, ensuring all UI updates are performed on the main thread.
- 4.Asynchronous Data Loading:
+ 4. Asynchronous Data Loading:
     * Challenge: Handling asynchronous data loading and updating the UI accordingly.
     * Solution: : Defined a NetworkError enum to represent different error states and updated the UI to show appropriate error messages.
 
