@@ -18,7 +18,7 @@ open HomeTest.xcodeproj
 - Select the target device (simulator or real device) and press Cmd + B to build the project.
 - Press Cmd + R to run the project on the selected device.
 
-4. * Running Tests**
+4. **Running Tests**
 - Unit Tests: Press Cmd + U to run the unit tests.
 
 ### Assumptions and Decisions
