@@ -25,7 +25,6 @@ Here are some screenshots of the application:
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/DevAmar1996/HomeTest.git
-   cd HomeTest
 
 2. **Open the project**
 open HomeTest.xcodeproj
