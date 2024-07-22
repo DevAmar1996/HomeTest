@@ -4,6 +4,20 @@
 ### Prerequisites
 - Swift 5.3+
 - iOS 15.0+
+  
+## Application Screenshots
+
+Here are some screenshots of the application:
+
+### Home Screen
+<img src="https://github.com/user-attachments/assets/577449d1-eb8e-4f92-b1d6-d47af3308ee3" alt="Home Screen" width="300"/>
+
+### Home Screen With Filter
+<img src="https://github.com/user-attachments/assets/6e8ef50c-0ec1-4c97-b795-d396e35f7a34" alt="Home Screen" width="300"/>
+
+### Detail Screen
+<img src="https://github.com/user-attachments/assets/1172feb2-0932-4d1d-a482-d2e374cf89f7" alt="Home Screen" width="300"/>
+
 
 ### Instructions
 1. **Clone the Repository**
