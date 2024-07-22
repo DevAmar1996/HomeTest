@@ -1,10 +1,5 @@
 # HomeTest
-## Building and Running the Application
 
-### Prerequisites
-- Swift 5.3+
-- iOS 15.0+
-  
 ## Application Screenshots
 
 Here are some screenshots of the application:
@@ -18,6 +13,13 @@ Here are some screenshots of the application:
 ### Detail Screen
 <img src="https://github.com/user-attachments/assets/1172feb2-0932-4d1d-a482-d2e374cf89f7" alt="Home Screen" width="300"/>
 
+
+## Building and Running the Application
+
+### Prerequisites
+- Swift 5.3+
+- iOS 15.0+
+  
 
 ### Instructions
 1. **Clone the Repository**
