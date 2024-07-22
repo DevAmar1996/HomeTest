@@ -20,7 +20,6 @@ struct CharacterDetailView: View {
                     NetworkImage(imagePath: character.image, width: geometry.size.width, heigh: 400)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .matchedGeometryEffect(id: character.id, in: namespace)
-                        .accessibilityIdentifier("characterImage")
                     Button {
                         withAnimation {
                             
@@ -37,7 +36,6 @@ struct CharacterDetailView: View {
                             .padding(.top, geometry.safeAreaInsets.top)
                             .padding(.leading, 20)
                     }
-                    .accessibilityIdentifier("backButton")
                 }
                 
                 HStack(alignment: .top) {
@@ -45,20 +43,17 @@ struct CharacterDetailView: View {
                         Text(character.name)
                             .font(.title)
                             .fontWeight(.semibold)
-                            .accessibilityIdentifier("characterName")
 
                         HStack(spacing: 4) {
                             Text(character.species + " • ")
                                 .font(.title2)
                                 .fontWeight(.light)
                                 .foregroundColor(.black)
-                                .accessibilityIdentifier("characterSpecies")
 
                             Text(character.gender)
                                 .font(.title2)
                                 .fontWeight(.light)
                                 .foregroundColor(.gray)
-                                .accessibilityIdentifier("characterGender")
 
                             
                         }
@@ -69,8 +64,7 @@ struct CharacterDetailView: View {
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
                             .background(Capsule().fill(Color.babyBlue
-                                                      ))
-                            .accessibilityIdentifier("characterStatus")
+                                                    ))
 
                     }
                 }.padding()
@@ -78,12 +72,10 @@ struct CharacterDetailView: View {
                     .font(.title3)
                     .foregroundColor(.secondary)
                     .padding(.leading)
-                    .accessibilityIdentifier("characterLocation")
 
             }
             .ignoresSafeArea()
         }.navigationBarHidden(true)
-            .accessibilityIdentifier("CharacterDetailView")
 
     }
 

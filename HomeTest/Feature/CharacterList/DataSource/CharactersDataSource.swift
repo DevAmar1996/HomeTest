@@ -35,9 +35,7 @@ class CharactersDataSource: NSObject, UITableViewDataSource, UITableViewDelegate
         //add view constraint
         view.fillSuperview()
         
-        cell.accessibilityIdentifier = "characterCell_\(indexPath.row)"
-        view.accessibilityIdentifier = "characterCell"
-        
+    
         return cell
     }
     

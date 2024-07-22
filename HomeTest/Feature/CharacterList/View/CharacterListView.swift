@@ -24,7 +24,6 @@ class CharacterListView: UIView, NibLoadable {
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: ReuseIdentifier.characterCell)
             tableView.dataSource = dataSource
             tableView.delegate = dataSource
-            tableView.accessibilityIdentifier = "characterTableView"
         }
     }
     

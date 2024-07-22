@@ -35,7 +35,6 @@ struct CharacterCellView: View {
             .padding(.horizontal, 2)
             .frame(height:  96)
         }       
-        .accessibilityIdentifier("characterNavigationLink")
 
 
     }
