@@ -10,7 +10,6 @@ import SwiftUI
 struct CharacterDetailView: View {
     var character: Character
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var namespace: Namespace.ID
 
     
     var body: some View {
@@ -19,7 +18,6 @@ struct CharacterDetailView: View {
                 ZStack(alignment: .topLeading) {
                     NetworkImage(imagePath: character.image, width: geometry.size.width, heigh: 400)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .matchedGeometryEffect(id: character.id, in: namespace)
                     Button {
                         withAnimation {
                             
@@ -82,7 +80,5 @@ struct CharacterDetailView: View {
 }
 
 #Preview {
-    @Namespace var namespace
-
-    return CharacterDetailView(character: .mock, namespace: namespace)
+    return CharacterDetailView(character: .mock)
 }

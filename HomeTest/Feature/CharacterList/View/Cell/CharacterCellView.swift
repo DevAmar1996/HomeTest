@@ -9,13 +9,11 @@ import SwiftUI
 
 struct CharacterCellView: View {
     var character: Character
-    @Namespace var namespace
 
     var body: some View {
-        NavigationLink(destination: CharacterDetailView(character: character, namespace: namespace)) {
+        NavigationLink(destination: CharacterDetailView(character: character)) {
             HStack(alignment: .top, spacing: 16) {
                 NetworkImage(imagePath: character.image, width: 75, heigh: 75)
-                    .matchedGeometryEffect(id: character.id, in: namespace)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                 VStack(alignment: .leading,spacing: 2){
                     Text(character.name)
